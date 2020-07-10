@@ -7,7 +7,8 @@
     "email": "contact@datavisyn.io",
     "url": "https://www.datavisyn.io"
   },
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Samuel Gratzl",
       "email": "sam@sgratzl.com",
       "url": "https://www.sgratzl.com"
@@ -30,13 +31,13 @@
     "build",
     "src/**/*.js"
   ],
-  "dependencies": {
-    "chart.js": "^2.8.0",
-    "@sgratzl/science": "^2.0.0"
+  "peerDependencies": {
+    "chart.js": "^2.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
+    "@sgratzl/science": "^2.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "eslint": "^6.5.0",
@@ -56,14 +57,13 @@
     "lint": "eslint src",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "posttest": "npm run lint",
+    "posttest": "yarn lint",
     "build:dev": "rollup -c -i src/index.js",
-    "build:prod": "npm run build:dev && uglifyjs build/Chart.BoxPlot.js -c -m -o build/Chart.BoxPlot.min.js",
-    "prebuild": "npm run clean && npm test",
-    "build": "npm run build:prod",
-    "preversion": "npm run test",
-    "prepare": "npm run build:dev",
-    "prepublishOnly": "npm run build:prod",
+    "build:prod": "yarn build:dev && uglifyjs build/Chart.BoxPlot.js -c -m -o build/Chart.BoxPlot.min.js",
+    "prebuild": "yarn clean && yarn test",
+    "build": "yarn build:prod",
+    "preversion": "yarn test",
+    "prepublishOnly": "yarn build:prod",
     "release:major": "release-it major",
     "release:minor": "release-it minor",
     "release:patch": "release-it patch",

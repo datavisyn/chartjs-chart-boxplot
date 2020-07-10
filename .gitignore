@@ -43,5 +43,4 @@ jspm_packages
 .idea
 
 # Build files
-/build
 *.tgz
